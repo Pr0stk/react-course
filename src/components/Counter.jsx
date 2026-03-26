@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react"
+import "../styles/App.css"
 
 export default function Counter() {
     const [count, setCount] = React.useState(0);
@@ -12,7 +13,7 @@ export default function Counter() {
     }
 
     return (
-    <div>
+    <div className="counter">
         <h1>Count is {count}</h1>
         <button onClick={increment}>Increment</button>
         <button onClick={decrement}>Decrement</button>
