@@ -12,10 +12,11 @@ import PostFilter from './components/PostFilter.jsx';
 import MyModal from './components/UI/MyModal/MyModal.jsx';
 import { usePosts } from './hooks/usePosts.js';
 import PostService from './API/PostService.js';
-import { getPageCount, getPagesArray } from './utils/pages.js';
+import { getPageCount} from './utils/pages.js';
 import Loader from './components/UI/Loader/Loader.jsx';
 import { useFetching } from './hooks/useFetching.js';
-import cl from './components/UI/Button/MyButton.module.css';
+import Pagination from './components/UI/Pagination/Pagination.jsx';
+
 
 function App() {
   const [posts, setPosts] = React.useState([]);
@@ -25,7 +26,6 @@ function App() {
   const [totalPages, setTotalPages] = React.useState(0);
   const [page, setPage] = React.useState(1);
   const [limit, setLimit] = React.useState(10);
-  let pages = useMemo(() => getPagesArray(totalPages), [totalPages]);
   const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
   const [fetchPosts, isPostLoading, postError] = useFetching( async (limit, page) => {
     const response = await PostService.getPosts(limit, page);
@@ -70,20 +70,7 @@ function App() {
       </div>
       <Counter />
       <ClassCounter />
-      <div>
-  {pages.map(p => (
-    <MyButton
-      key={`page-${p}`}
-      className={[
-        cl.small,
-        p === page ? cl.active : ""
-      ].join(" ")}
-      onClick={() => changePage(p)}
-    >
-      {p}
-    </MyButton>
-  ))}
-</div>
+      <Pagination page={page} totalPages={totalPages} changePage={changePage} />
     </div>
     </>
   );
