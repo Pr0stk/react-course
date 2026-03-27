@@ -7,8 +7,11 @@ export default function PostItem(props) {
   return (
     <div>
         <h1>{props.post.title}</h1>
-        <h1>{value}</h1>
-        <input type="text" value={value} onChange={(e) => setValue(e.target.value)} />
+        <h2>{value}</h2>
+        <div>{props.post.body}</div>
+        <div>
+          <button onClick={() => props.remove(props.post)}>Удалить</button>
+        </div>
     </div>
   );
 }

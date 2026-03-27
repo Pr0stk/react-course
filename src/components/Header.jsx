@@ -8,8 +8,7 @@ export default function Header() {
       <div className="header__logo">REACT COURSE</div>
 
       <nav className="header__nav">
-        <a href="#">Home</a>
-        <a href="#">About</a>
+        <a href="">Home</a>
       </nav>
     </header>
   );
