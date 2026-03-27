@@ -6,7 +6,7 @@ export default function PostItem(props) {
 
   return (
     <div>
-        <h1>{props.post.title}</h1>
+        <h1>{props.post.id} {props.post.title}</h1>
         <h2>{value}</h2>
         <div>{props.post.body}</div>
         <div>

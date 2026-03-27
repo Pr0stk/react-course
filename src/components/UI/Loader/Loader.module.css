@@ -1,0 +1,19 @@
+.loaderWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.loader {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px dashed #000;
+    animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
