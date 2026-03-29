@@ -11,21 +11,13 @@ export default class PostService {
         return response;
     }
 
-    async createPost(post) {
-        const response = await axios.get("https://jsonplaceholder.typicode.com/posts", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(post),
-        });
-        return response.data;
+    static async getCommentsByPostId(id) {
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+        return response;
     }
 
-    async deletePost(post) {
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${post.id}`, {
-            method: "DELETE",
-        });
-        return response.data
+    static async getById(id) {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
+        return response;
     }
 }
